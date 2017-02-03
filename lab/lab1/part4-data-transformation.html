@@ -71,6 +71,21 @@
 
     ===================== */
 
+var dataFiltered = []
+for(i=0; i<bikeArrayClean.length; i++){
+  if(bikeArrayClean[i][3]>=20){
+    dataFiltered.push(bikeArrayClean[i]);
+  }
+  // console.log(i);
+    // datafileterd.push(){
+    //   if(bikeArrayClean[i][3] >=20)
+}
+
+
+
+
+
+
 
 
     /* =====================
@@ -98,6 +113,11 @@
 
     ===================== */
 
+    for(i=0; i< dataFiltered.length;i++){
+      console.log(map);
+      L.marker([dataFiltered[i][0],dataFiltered[i][1]]).addTo(map).bindPopup(dataFiltered[i][2] + dataFiltered[i][3]);
+      // console.log([dataFiltered[i][0],dataFiltered[i][1]]);
+    };
 
 
     /* =====================
