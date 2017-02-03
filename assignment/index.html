@@ -13,6 +13,7 @@
     </div>
 
     <!--javascript imports-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="leaflet.js"></script>
     <script src="health_centers.js"></script>
 
@@ -47,11 +48,32 @@
 
        Remember: functions are meant to facilitate code comprehension and reuse. Try to use them to organize your code.
       ===================== */
+var healtharray = healthCenters;
 
+var myIcon = L.icon({
+    iconUrl: 'images/tooth icon.png',
+    iconSize: [38, 95],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76]
+    // shadowUrl: 'my-icon-shadow.png',
+    // shadowRetinaUrl: 'my-icon-shadow@2x.png',
+    // shadowSize: [68, 95],
+    // shadowAnchor: [22, 94]
+  });
+
+_.each(healtharray, function(object){
+  // console.log(object.LNG);
+  if (object.DENTAL_PHONE === "N/A"){
+    L.marker([object.LAT, object.LNG]).addTo(map).bindPopup(object.NAME);
+  }
+    else{
+      L.marker([object.LAT, object.LNG], {icon: myIcon}).addTo(map).bindPopup(object.NAME);
+    }
+})
 
       /* =====================
 
-      Start code
+
 
       ===================== */
 
@@ -73,3 +95,22 @@
     <!--Your code ends here-->
   </body>
 </html>
+
+
+
+<!-- var data = bikeArrayClean;
+
+/* =====================
+
+Start code to filter data
+
+===================== */
+
+// var dataFiltered = []
+// for(i=0; i<bikeArrayClean.length; i++){
+// if(bikeArrayClean[i][3]>=20){
+// dataFiltered.push(bikeArrayClean[i]);
+// } -->
+
+// L.marker([restaurantData[i][0],restaurantData[i][1]]).addTo(map).bindPopup(restaurantData[i][2]);
+// };
